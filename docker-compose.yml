@@ -12,7 +12,7 @@ services:
     image: agrrh/udpxy:latest
     restart: unless-stopped
     network_mode: "host"
-    command: ["-T", "-c", "100"]
+    command: ["-T", "-c", "100", "-p", "4022"]
 
   rcti:
     image: yuspynoza/rctiplus-go:latest
@@ -48,11 +48,13 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     network_mode: "host"
+    depends_on:
+      - udpxy
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/kompastv &&
       exec ffmpeg
       -hide_banner -loglevel warning
-      -re -i 'http://localhost:4022/rtp/239.2.2.17:3000'
+      -re -i 'http://192.168.2.8:4022/rtp/239.2.2.17:3000'
       -c:v copy
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1
       -f hls
