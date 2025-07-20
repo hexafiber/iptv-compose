@@ -92,7 +92,24 @@ services:
       - ./hls/aac:/hls
     command: >
       -hide_banner -loglevel warning
-      -re -i rtp://@239.2.2.17:3000
+      -re -i rtp://@239.2.2.29:3000
+      -c:v copy
+      -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1
+      -f hls
+      -hls_time 2
+      -hls_list_size 20
+      -hls_flags delete_segments+append_list
+      -hls_segment_filename /hls/seg_%s.ts
+      /hls/kompastv/index.m3u8
+
+  ffmpeg-trans7:
+    image: jrottenberg/ffmpeg:latest
+    restart: unless-stopped
+    volumes:
+      - ./hls/aac:/hls
+    command: >
+      -hide_banner -loglevel warning
+      -re -i rtp://@239.2.2.11:3000
       -c:v copy
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1
       -f hls
