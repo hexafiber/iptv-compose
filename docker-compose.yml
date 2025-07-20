@@ -1,0 +1,121 @@
+services:
+  nginx:
+    image: nginx:alpine
+    restart: unless-stopped
+    volumes:
+      - ./config/origin/nginx.conf:/etc/nginx/nginx.conf:ro
+      - /tmp/ramdisk:/hls:ro
+    ports:
+      - "80:80"
+
+  rcti:
+    image: yuspynoza/rctiplus-go:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    command: -O /hls/rcti "http://rctiplus.hexafiber.net/rcti.m3u8"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50' # Limits the service to 0.5 of a CPU core
+          memory: 512M
+        reservations:
+          cpus: '0.25' # Reserves 0.25 of a CPU core for the service
+          memory: 128M
+
+  mnctv:
+    image: yuspynoza/rctiplus-go:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    command: -O /hls/mnctv "http://rctiplus.hexafiber.net/mnctv.m3u8"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50' # Limits the service to 0.5 of a CPU core
+          memory: 512M
+        reservations:
+          cpus: '0.25' # Reserves 0.25 of a CPU core for the service
+          memory: 128M
+
+  gtv:
+    image: yuspynoza/rctiplus-go:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    command: -O /hls/gtv "http://rctiplus.hexafiber.net/gtv.m3u8"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50' # Limits the service to 0.5 of a CPU core
+          memory: 512M
+        reservations:
+          cpus: '0.25' # Reserves 0.25 of a CPU core for the service
+          memory: 128M
+
+  inews:
+    image: yuspynoza/rctiplus-go:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    command: -O /hls/inews "http://rctiplus.hexafiber.net/inews.m3u8"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50' # Limits the service to 0.5 of a CPU core
+          memory: 512M
+        reservations:
+          cpus: '0.25' # Reserves 0.25 of a CPU core for the service
+          memory: 128M
+
+  ffmpeg-kompastv:
+    image: jrottenberg/ffmpeg:latest
+    restart: unless-stopped
+    volumes:
+      - ./hls/aac:/hls
+    command: >
+      -hide_banner -loglevel warning
+      -re -i rtp://@239.2.2.17:3000
+      -c:v copy
+      -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1
+      -f hls
+      -hls_time 2
+      -hls_list_size 20
+      -hls_flags delete_segments+append_list
+      -hls_segment_filename /hls/seg_%s.ts
+      /hls/kompastv/index.m3u8
+
+  ffmpeg-sctv:
+    image: jrottenberg/ffmpeg:latest
+    restart: unless-stopped
+    volumes:
+      - ./hls/aac:/hls
+    command: >
+      -hide_banner -loglevel warning
+      -re -i rtp://@239.2.2.17:3000
+      -c:v copy
+      -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1
+      -f hls
+      -hls_time 2
+      -hls_list_size 20
+      -hls_flags delete_segments+append_list
+      -hls_segment_filename /hls/seg_%s.ts
+      /hls/kompastv/index.m3u8
+
+  # hls-mp3:
+  #   image: jrottenberg/ffmpeg:5-alpine
+  #   container_name: hls_mp3
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ./hls/mp3:/hls
+  #   command: >
+  #     -hide_banner -loglevel info
+  #     -i rtp://@239.1.1.2:1234
+  #     -c:v copy
+  #     -c:a libmp3lame -b:a 64k -ar 32000 -ac 1
+  #     -f hls
+  #     -hls_time 2
+  #     -hls_list_size 20
+  #     -hls_flags delete_segments+append_list
+  #     -hls_segment_filename /hls/seg_%s.ts
+  #     /hls/index.m3u8
