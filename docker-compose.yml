@@ -46,7 +46,7 @@ services:
       /bin/sh -c "mkdir -p /hls/kompastv &&
       exec ffmpeg
       -hide_banner -loglevel warning
-      -re -i rtp://239.2.2.17:3000
+      -re -i 'udp://239.2.2.17:3000?buffer_size=2097152'
       -c:v copy
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1
       -f hls
@@ -66,7 +66,7 @@ services:
       /bin/sh -c "mkdir -p /hls/sctv &&
       exec ffmpeg
       -hide_banner -loglevel warning
-      -re -i rtp://239.2.2.29:3000
+      -re -i 'udp://239.2.2.29:3000?buffer_size=2097152'
       -c:v copy
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1
       -f hls
@@ -86,7 +86,7 @@ services:
       /bin/sh -c "mkdir -p /hls/trans7 &&
       exec ffmpeg
       -hide_banner -loglevel warning
-      -re -i rtp://239.2.2.11:3000
+      -re -i 'udp://239.2.2.11:3000?buffer_size=2097152'
       -c:v copy
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1
       -f hls
@@ -106,7 +106,7 @@ services:
   #   entrypoint: >
   #     /bin/sh -c "mkdir -p /hls/rcti &&
   #     -loglevel info
-  #     -i rtp://239.1.1.2:1234
+  #     -i 'udp://239.1.1.2?buffer_size=2097152':1234
   #     -c:v copy
   #     -c:a libmp3lame -b:a 64k -ar 32000 -ac 1
   #     -f hls
