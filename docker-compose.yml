@@ -76,8 +76,9 @@ services:
     network_mode: "host"
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/kompastv &&
-      -hide_banner -loglevel warning
-      -re -i 'rtp://@239.2.2.17:3000'
+      exec ffmpeg
+      -loglevel warning
+      -re -i rtp://@239.2.2.17:3000
       -c:v copy
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1
       -f hls
@@ -95,8 +96,9 @@ services:
     network_mode: "host"
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/sctv &&
-      -hide_banner -loglevel warning
-      -re -i 'rtp://@239.2.2.29:3000'
+      exec ffmpeg
+      -loglevel warning
+      -re -i rtp://@239.2.2.29:3000
       -c:v copy
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1
       -f hls
@@ -114,15 +116,16 @@ services:
     network_mode: "host"
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/trans7 &&
-      -hide_banner -loglevel warning
-      -re -i 'rtp://@239.2.2.11:3000'
+      exec ffmpeg
+      -loglevel warning
+      -re -i rtp://@239.2.2.11:3000
       -c:v copy
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1
       -f hls
       -hls_time 2
       -hls_list_size 20
       -hls_flags delete_segments+append_list
-      # -hls_segment_filename /hls/trans7/seg_%s.ts
+      -hls_segment_filename /hls/trans7/seg_%s.ts
       /hls/trans7/index.m3u8"
 
   # hls-mp3:
@@ -134,7 +137,7 @@ services:
   #   network_mode: "host"#
   #   entrypoint: >
   #     /bin/sh -c "mkdir -p /hls/rcti &&
-  #     -hide_banner -loglevel info
+  #     -loglevel info
   #     -i rtp://@239.1.1.2:1234
   #     -c:v copy
   #     -c:a libmp3lame -b:a 64k -ar 32000 -ac 1
