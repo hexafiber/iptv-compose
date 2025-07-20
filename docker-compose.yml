@@ -8,12 +8,6 @@ services:
     ports:
       - "80:80"
 
-  udpxy:
-    image: agrrh/udpxy:latest
-    restart: unless-stopped
-    network_mode: "host"
-    command: ["-T", "-c", "100", "-p", "4022"]
-
   rcti:
     image: yuspynoza/rctiplus-go:latest
     restart: unless-stopped
@@ -48,13 +42,11 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     network_mode: "host"
-    depends_on:
-      - udpxy
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/kompastv &&
       exec ffmpeg
       -hide_banner -loglevel warning
-      -re -i 'http://192.168.2.8:4022/rtp/239.2.2.17:3000'
+      -re -i 'udp://239.2.2.17:3000'
       -c:v copy
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1
       -f hls
@@ -63,3 +55,21 @@ services:
       -hls_flags delete_segments+append_list
       -hls_segment_filename /hls/kompastv/seg_%d.ts
       /hls/kompastv/index.m3u8"
+
+  tvone:
+    image: restreamio/gstreamer:2025-06-18T18-00-49Z-prod
+    restart: unless-stopped
+    network_mode: host # Butuh untuk join multicast dari host, atau atur --cap-add=NET_ADMIN
+    volumes:
+      - /tmp/ramdisk:/hls
+    command: >
+     /bin/sh -c "mkdir -p /hls/tvone &&
+      exec gst-launch-1.0 -e
+      udpsrc multicast-group=239.2.2.2 port=3000 buffer-size=2097152 !
+      queue max-size-bytes=0 max-size-buffers=0 max-size-time=2000000000 !
+      tsdemux name=demux
+        demux.audio_0 ! queue ! mpegaudioparse ! avdec_mp2float ! audioconvert ! voaacenc bitrate=128000 ! aacparse ! mux.
+        demux.video_0 ! queue ! h264parse ! mux.
+      mpegtsmux name=mux !
+      hlssink max-files=6 target-duration=4
+      location=/hls/tvone/segment%05d.ts playlist-location=/hls/tvone/index.m3u8"
