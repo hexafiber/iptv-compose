@@ -73,6 +73,7 @@ services:
     restart: unless-stopped
     volumes:
       - /tmp/ramdisk:/hls
+    network_mode: "host"
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/kompastv &&
       -hide_banner -loglevel warning
@@ -91,10 +92,11 @@ services:
     restart: unless-stopped
     volumes:
       - /tmp/ramdisk:/hls
+    network_mode: "host"
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/sctv &&
       -hide_banner -loglevel warning
-      -re -i rtp://@239.2.2.29:3000
+      -re -i 'rtp://@239.2.2.29:3000'
       -c:v copy
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1
       -f hls
@@ -109,6 +111,7 @@ services:
     restart: unless-stopped
     volumes:
       - /tmp/ramdisk:/hls
+    network_mode: "host"
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/trans7 &&
       -hide_banner -loglevel warning
@@ -128,7 +131,8 @@ services:
   #   restart: unless-stopped
   #   volumes:
   #     - ./hls/mp3:/hls
-  #   entrypoint: >
+  network_mode: "host"#
+  entrypoint: >
   #     /bin/sh -c "mkdir -p /hls/rcti &&
   #     -hide_banner -loglevel info
   #     -i rtp://@239.1.1.2:1234
