@@ -72,7 +72,7 @@ services:
     image: jrottenberg/ffmpeg:latest
     restart: unless-stopped
     volumes:
-      - ./hls/aac:/hls
+      - /tmp/ramdisk:/hls
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/rcti &&
       -hide_banner -loglevel warning
@@ -90,7 +90,7 @@ services:
     image: jrottenberg/ffmpeg:latest
     restart: unless-stopped
     volumes:
-      - ./hls/aac:/hls
+      - /tmp/ramdisk:/hls
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/rcti &&
       -hide_banner -loglevel warning
@@ -108,7 +108,7 @@ services:
     image: jrottenberg/ffmpeg:latest
     restart: unless-stopped
     volumes:
-      - ./hls/aac:/hls
+      - /tmp/ramdisk:/hls
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/rcti &&
       -hide_banner -loglevel warning
