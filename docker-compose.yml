@@ -74,7 +74,7 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     entrypoint: >
-      /bin/sh -c "mkdir -p /hls/rcti &&
+      /bin/sh -c "mkdir -p /hls/kompastv &&
       -hide_banner -loglevel warning
       -re -i 'rtp://@239.2.2.17:3000'
       -c:v copy
@@ -83,7 +83,7 @@ services:
       -hls_time 2
       -hls_list_size 20
       -hls_flags delete_segments+append_list
-      -hls_segment_filename /hls/seg_%s.ts
+      -hls_segment_filename /hls/kompastv/seg_%s.ts
       /hls/kompastv/index.m3u8"
 
   ffmpeg-sctv:
@@ -92,7 +92,7 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     entrypoint: >
-      /bin/sh -c "mkdir -p /hls/rcti &&
+      /bin/sh -c "mkdir -p /hls/sctv &&
       -hide_banner -loglevel warning
       -re -i rtp://@239.2.2.29:3000
       -c:v copy
@@ -101,8 +101,8 @@ services:
       -hls_time 2
       -hls_list_size 20
       -hls_flags delete_segments+append_list
-      -hls_segment_filename /hls/seg_%s.ts
-      /hls/kompastv/index.m3u8"
+      -hls_segment_filename /hls/sctv/seg_%s.ts
+      /hls/sctv/index.m3u8"
 
   ffmpeg-trans7:
     image: jrottenberg/ffmpeg:latest
@@ -110,7 +110,7 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     entrypoint: >
-      /bin/sh -c "mkdir -p /hls/rcti &&
+      /bin/sh -c "mkdir -p /hls/trans7 &&
       -hide_banner -loglevel warning
       -re -i 'rtp://@239.2.2.11:3000'
       -c:v copy
@@ -119,8 +119,8 @@ services:
       -hls_time 2
       -hls_list_size 20
       -hls_flags delete_segments+append_list
-      -hls_segment_filename /hls/seg_%s.ts
-      /hls/kompastv/index.m3u8"
+      # -hls_segment_filename /hls/trans7/seg_%s.ts
+      /hls/trans7/index.m3u8"
 
   # hls-mp3:
   #   image: jrottenberg/ffmpeg:5-alpine
