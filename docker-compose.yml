@@ -14,14 +14,6 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     command: -O /hls/rcti "http://rctiplus.hexafiber.net/rcti.m3u8"
-    deploy:
-      resources:
-        limits:
-          cpus: '0.50' # Limits the service to 0.5 of a CPU core
-          memory: 512M
-        reservations:
-          cpus: '0.25' # Reserves 0.25 of a CPU core for the service
-          memory: 128M
 
   mnctv:
     image: yuspynoza/rctiplus-go:latest
@@ -29,14 +21,6 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     command: -O /hls/mnctv "http://rctiplus.hexafiber.net/mnctv.m3u8"
-    deploy:
-      resources:
-        limits:
-          cpus: '0.50' # Limits the service to 0.5 of a CPU core
-          memory: 512M
-        reservations:
-          cpus: '0.25' # Reserves 0.25 of a CPU core for the service
-          memory: 128M
 
   gtv:
     image: yuspynoza/rctiplus-go:latest
@@ -44,14 +28,6 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     command: -O /hls/gtv "http://rctiplus.hexafiber.net/gtv.m3u8"
-    deploy:
-      resources:
-        limits:
-          cpus: '0.50' # Limits the service to 0.5 of a CPU core
-          memory: 512M
-        reservations:
-          cpus: '0.25' # Reserves 0.25 of a CPU core for the service
-          memory: 128M
 
   inews:
     image: yuspynoza/rctiplus-go:latest
@@ -59,14 +35,6 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     command: -O /hls/inews "http://rctiplus.hexafiber.net/inews.m3u8"
-    deploy:
-      resources:
-        limits:
-          cpus: '0.50' # Limits the service to 0.5 of a CPU core
-          memory: 512M
-        reservations:
-          cpus: '0.25' # Reserves 0.25 of a CPU core for the service
-          memory: 128M
 
   ffmpeg-kompastv:
     image: jrottenberg/ffmpeg:latest
@@ -77,15 +45,15 @@ services:
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/kompastv &&
       exec ffmpeg
-      -loglevel warning
-      -re -i rtp://@239.2.2.17:3000
+      -hide_banner -loglevel warning
+      -re -i rtp://239.2.2.17:3000
       -c:v copy
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1
       -f hls
       -hls_time 2
       -hls_list_size 20
       -hls_flags delete_segments+append_list
-      -hls_segment_filename /hls/kompastv/seg_%s.ts
+      -hls_segment_filename /hls/kompastv/seg_%d.ts
       /hls/kompastv/index.m3u8"
 
   ffmpeg-sctv:
@@ -97,15 +65,15 @@ services:
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/sctv &&
       exec ffmpeg
-      -loglevel warning
-      -re -i rtp://@239.2.2.29:3000
+      -hide_banner -loglevel warning
+      -re -i rtp://239.2.2.29:3000
       -c:v copy
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1
       -f hls
       -hls_time 2
       -hls_list_size 20
       -hls_flags delete_segments+append_list
-      -hls_segment_filename /hls/sctv/seg_%s.ts
+      -hls_segment_filename /hls/sctv/seg_%d.ts
       /hls/sctv/index.m3u8"
 
   ffmpeg-trans7:
@@ -117,15 +85,15 @@ services:
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/trans7 &&
       exec ffmpeg
-      -loglevel warning
-      -re -i rtp://@239.2.2.11:3000
+      -hide_banner -loglevel warning
+      -re -i rtp://239.2.2.11:3000
       -c:v copy
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1
       -f hls
       -hls_time 2
       -hls_list_size 20
       -hls_flags delete_segments+append_list
-      -hls_segment_filename /hls/trans7/seg_%s.ts
+      -hls_segment_filename /hls/trans7/seg_%d.ts
       /hls/trans7/index.m3u8"
 
   # hls-mp3:
@@ -138,12 +106,12 @@ services:
   #   entrypoint: >
   #     /bin/sh -c "mkdir -p /hls/rcti &&
   #     -loglevel info
-  #     -i rtp://@239.1.1.2:1234
+  #     -i rtp://239.1.1.2:1234
   #     -c:v copy
   #     -c:a libmp3lame -b:a 64k -ar 32000 -ac 1
   #     -f hls
   #     -hls_time 2
   #     -hls_list_size 20
   #     -hls_flags delete_segments+append_list
-  #     -hls_segment_filename /hls/seg_%s.ts
+  #     -hls_segment_filename /hls/seg_%d.ts
   #     /hls/index.m3u8
