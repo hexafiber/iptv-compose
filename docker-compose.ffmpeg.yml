@@ -1,0 +1,483 @@
+services:
+  tvone:
+    image: jrottenberg/ffmpeg:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    network_mode: "host"
+    entrypoint: >
+      /bin/sh -c "mkdir -p /hls/tvone &&
+      exec ffmpeg -hide_banner -loglevel warning \
+      -analyzeduration 10000000 -probesize 10000000 \
+      -re -i 'udp://239.2.2.2:3000?buffer_size=2097152' \
+      -map 0:0 -map 0:1 \
+      -c:v copy \
+      -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
+      -f hls \
+      -hls_time 2 \
+      -hls_list_size 20 \
+      -hls_flags delete_segments+append_list \
+      -hls_segment_filename '/hls/tvone/seg_%05d.ts' \
+      '/hls/tvone/index.m3u8'"
+
+  kompastv:
+    image: jrottenberg/ffmpeg:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    network_mode: "host"
+    entrypoint: >
+      /bin/sh -c "mkdir -p /hls/kompastv &&
+      exec ffmpeg -hide_banner -loglevel warning \
+      -analyzeduration 10000000 -probesize 10000000 \
+      -re -i 'udp://239.2.2.17:3000?buffer_size=2097152' \
+      -map 0:0 -map 0:1 \
+      -c:v copy \
+      -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
+      -f hls \
+      -hls_time 2 \
+      -hls_list_size 20 \
+      -hls_flags delete_segments+append_list \
+      -hls_segment_filename '/hls/kompastv/seg_%05d.ts' \
+      '/hls/kompastv/index.m3u8'"
+
+  cnbc_indonesia:
+    image: jrottenberg/ffmpeg:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    network_mode: "host"
+    entrypoint: >
+      /bin/sh -c "mkdir -p /hls/cnbc_indonesia &&
+      exec ffmpeg -hide_banner -loglevel warning \
+      -analyzeduration 10000000 -probesize 10000000 \
+      -re -i 'udp://239.2.2.12:3000?buffer_size=2097152' \
+      -map 0:0 -map 0:1 \
+      -c:v copy \
+      -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
+      -f hls \
+      -hls_time 2 \
+      -hls_list_size 20 \
+      -hls_flags delete_segments+append_list \
+      -hls_segment_filename '/hls/cnbc_indonesia/seg_%05d.ts' \
+      '/hls/cnbc_indonesia/index.m3u8'"
+
+  cnn_indonesia:
+    image: jrottenberg/ffmpeg:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    network_mode: "host"
+    entrypoint: >
+      /bin/sh -c "mkdir -p /hls/cnn_indonesia &&
+      exec ffmpeg -hide_banner -loglevel warning \
+      -analyzeduration 10000000 -probesize 10000000 \
+      -re -i 'udp://239.2.2.13:3000?buffer_size=2097152' \
+      -map 0:0 -map 0:1 \
+      -c:v copy \
+      -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
+      -f hls \
+      -hls_time 2 \
+      -hls_list_size 20 \
+      -hls_flags delete_segments+append_list \
+      -hls_segment_filename '/hls/cnn_indonesia/seg_%05d.ts' \
+      '/hls/cnn_indonesia/index.m3u8'"
+
+  metrotv:
+    image: jrottenberg/ffmpeg:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    network_mode: "host"
+    entrypoint: >
+      /bin/sh -c "mkdir -p /hls/metrotv &&
+      exec ffmpeg -hide_banner -loglevel warning \
+      -analyzeduration 10000000 -probesize 10000000 \
+      -re -i 'udp://239.2.2.24:3000?buffer_size=2097152' \
+      -map 0:0 -map 0:1 \
+      -c:v copy \
+      -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
+      -f hls \
+      -hls_time 2 \
+      -hls_list_size 20 \
+      -hls_flags delete_segments+append_list \
+      -hls_segment_filename '/hls/metrotv/seg_%05d.ts' \
+      '/hls/metrotv/index.m3u8'"
+
+  bn_channel:
+    image: jrottenberg/ffmpeg:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    network_mode: "host"
+    entrypoint: >
+      /bin/sh -c "mkdir -p /hls/bn_channel &&
+      exec ffmpeg -hide_banner -loglevel warning \
+      -analyzeduration 10000000 -probesize 10000000 \
+      -re -i 'udp://239.2.2.25:3000?buffer_size=2097152' \
+      -map 0:0 -map 0:1 \
+      -c:v copy \
+      -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
+      -f hls \
+      -hls_time 2 \
+      -hls_list_size 20 \
+      -hls_flags delete_segments+append_list \
+      -hls_segment_filename '/hls/bn_channel/seg_%05d.ts' \
+      '/hls/bn_channel/index.m3u8'"
+
+  sctv:
+    image: jrottenberg/ffmpeg:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    network_mode: "host"
+    entrypoint: >
+      /bin/sh -c "mkdir -p /hls/sctv &&
+      exec ffmpeg -hide_banner -loglevel warning \
+      -analyzeduration 10000000 -probesize 10000000 \
+      -re -i 'udp://239.2.2.29:3000?buffer_size=2097152' \
+      -map 0:0 -map 0:1 \
+      -c:v copy \
+      -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
+      -f hls \
+      -hls_time 2 \
+      -hls_list_size 20 \
+      -hls_flags delete_segments+append_list \
+      -hls_segment_filename '/hls/sctv/seg_%05d.ts' \
+      '/hls/sctv/index.m3u8'"
+
+  indosiar:
+    image: jrottenberg/ffmpeg:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    network_mode: "host"
+    entrypoint: >
+      /bin/sh -c "mkdir -p /hls/indosiar &&
+      exec ffmpeg -hide_banner -loglevel warning \
+      -analyzeduration 10000000 -probesize 10000000 \
+      -re -i 'udp://239.2.2.28:3000?buffer_size=2097152' \
+      -map 0:0 -map 0:1 \
+      -c:v copy \
+      -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
+      -f hls \
+      -hls_time 2 \
+      -hls_list_size 20 \
+      -hls_flags delete_segments+append_list \
+      -hls_segment_filename '/hls/indosiar/seg_%05d.ts' \
+      '/hls/indosiar/index.m3u8'"
+
+  tvri_nasional:
+    image: jrottenberg/ffmpeg:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    network_mode: "host"
+    entrypoint: >
+      /bin/sh -c "mkdir -p /hls/tvri_nasional &&
+      exec ffmpeg -hide_banner -loglevel warning \
+      -analyzeduration 10000000 -probesize 10000000 \
+      -re -i 'udp://239.2.2.7:3000?buffer_size=2097152' \
+      -map 0:0 -map 0:1 \
+      -c:v copy \
+      -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
+      -f hls \
+      -hls_time 2 \
+      -hls_list_size 20 \
+      -hls_flags delete_segments+append_list \
+      -hls_segment_filename '/hls/tvri_nasional/seg_%05d.ts' \
+      '/hls/tvri_nasional/index.m3u8'"
+
+  tvri_world:
+    image: jrottenberg/ffmpeg:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    network_mode: "host"
+    entrypoint: >
+      /bin/sh -c "mkdir -p /hls/tvri_world &&
+      exec ffmpeg -hide_banner -loglevel warning \
+      -analyzeduration 10000000 -probesize 10000000 \
+      -re -i 'udp://239.2.2.8:3000?buffer_size=2097152' \
+      -map 0:0 -map 0:1 \
+      -c:v copy \
+      -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
+      -f hls \
+      -hls_time 2 \
+      -hls_list_size 20 \
+      -hls_flags delete_segments+append_list \
+      -hls_segment_filename '/hls/tvri_world/seg_%05d.ts' \
+      '/hls/tvri_world/index.m3u8'"
+
+  tvri_sport:
+    image: jrottenberg/ffmpeg:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    network_mode: "host"
+    entrypoint: >
+      /bin/sh -c "mkdir -p /hls/tvri_sport &&
+      exec ffmpeg -hide_banner -loglevel warning \
+      -analyzeduration 10000000 -probesize 10000000 \
+      -re -i 'udp://239.2.2.9:3000?buffer_size=2097152' \
+      -map 0:0 -map 0:1 \
+      -c:v copy \
+      -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
+      -f hls \
+      -hls_time 2 \
+      -hls_list_size 20 \
+      -hls_flags delete_segments+append_list \
+      -hls_segment_filename '/hls/tvri_sport/seg_%05d.ts' \
+      '/hls/tvri_sport/index.m3u8'"
+
+  antv:
+    image: jrottenberg/ffmpeg:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    network_mode: "host"
+    entrypoint: >
+      /bin/sh -c "mkdir -p /hls/antv &&
+      exec ffmpeg -hide_banner -loglevel warning \
+      -analyzeduration 10000000 -probesize 10000000 \
+      -re -i 'udp://239.2.2.15:3000?buffer_size=2097152' \
+      -map 0:0 -map 0:1 \
+      -c:v copy \
+      -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
+      -f hls \
+      -hls_time 2 \
+      -hls_list_size 20 \
+      -hls_flags delete_segments+append_list \
+      -hls_segment_filename '/hls/antv/seg_%05d.ts' \
+      '/hls/antv/index.m3u8'"
+
+  transtv:
+    image: jrottenberg/ffmpeg:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    network_mode: "host"
+    entrypoint: >
+      /bin/sh -c "mkdir -p /hls/transtv &&
+      exec ffmpeg -hide_banner -loglevel warning \
+      -analyzeduration 10000000 -probesize 10000000 \
+      -re -i 'udp://239.2.2.10:3000?buffer_size=2097152' \
+      -map 0:0 -map 0:1 \
+      -c:v copy \
+      -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
+      -f hls \
+      -hls_time 2 \
+      -hls_list_size 20 \
+      -hls_flags delete_segments+append_list \
+      -hls_segment_filename '/hls/transtv/seg_%05d.ts' \
+      '/hls/transtv/index.m3u8'"
+
+  trans7:
+    image: jrottenberg/ffmpeg:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    network_mode: "host"
+    entrypoint: >
+      /bin/sh -c "mkdir -p /hls/trans7 &&
+      exec ffmpeg -hide_banner -loglevel warning \
+      -analyzeduration 10000000 -probesize 10000000 \
+      -re -i 'udp://239.2.2.11:3000?buffer_size=2097152' \
+      -map 0:0 -map 0:1 \
+      -c:v copy \
+      -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
+      -f hls \
+      -hls_time 2 \
+      -hls_list_size 20 \
+      -hls_flags delete_segments+append_list \
+      -hls_segment_filename '/hls/trans7/seg_%05d.ts' \
+      '/hls/trans7/index.m3u8'"
+
+  mdtv:
+    image: jrottenberg/ffmpeg:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    network_mode: "host"
+    entrypoint: >
+      /bin/sh -c "mkdir -p /hls/mdtv &&
+      exec ffmpeg -hide_banner -loglevel warning \
+      -analyzeduration 10000000 -probesize 10000000 \
+      -re -i 'udp://239.2.2.14:3000?buffer_size=2097152' \
+      -map 0:0 -map 0:1 \
+      -c:v copy \
+      -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
+      -f hls \
+      -hls_time 2 \
+      -hls_list_size 20 \
+      -hls_flags delete_segments+append_list \
+      -hls_segment_filename '/hls/mdtv/seg_%05d.ts' \
+      '/hls/mdtv/index.m3u8'"
+
+  moji:
+    image: jrottenberg/ffmpeg:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    network_mode: "host"
+    entrypoint: >
+      /bin/sh -c "mkdir -p /hls/moji &&
+      exec ffmpeg -hide_banner -loglevel warning \
+      -analyzeduration 10000000 -probesize 10000000 \
+      -re -i 'udp://239.2.2.5:3000?buffer_size=2097152' \
+      -map 0:0 -map 0:1 \
+      -c:v copy \
+      -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
+      -f hls \
+      -hls_time 2 \
+      -hls_list_size 20 \
+      -hls_flags delete_segments+append_list \
+      -hls_segment_filename '/hls/moji/seg_%05d.ts' \
+      '/hls/moji/index.m3u8'"
+
+  rtv:
+    image: jrottenberg/ffmpeg:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    network_mode: "host"
+    entrypoint: >
+      /bin/sh -c "mkdir -p /hls/rtv &&
+      exec ffmpeg -hide_banner -loglevel warning \
+      -analyzeduration 10000000 -probesize 10000000 \
+      -re -i 'udp://239.2.2.23:3000?buffer_size=2097152' \
+      -map 0:0 -map 0:1 \
+      -c:v copy \
+      -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
+      -f hls \
+      -hls_time 2 \
+      -hls_list_size 20 \
+      -hls_flags delete_segments+append_list \
+      -hls_segment_filename '/hls/rtv/seg_%05d.ts' \
+      '/hls/rtv/index.m3u8'"
+
+  vtv:
+    image: jrottenberg/ffmpeg:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    network_mode: "host"
+    entrypoint: >
+      /bin/sh -c "mkdir -p /hls/vtv &&
+      exec ffmpeg -hide_banner -loglevel warning \
+      -analyzeduration 10000000 -probesize 10000000 \
+      -re -i 'udp://239.2.2.16:3000?buffer_size=2097152' \
+      -map 0:0 -map 0:1 \
+      -c:v copy \
+      -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
+      -f hls \
+      -hls_time 2 \
+      -hls_list_size 20 \
+      -hls_flags delete_segments+append_list \
+      -hls_segment_filename '/hls/vtv/seg_%05d.ts' \
+      '/hls/vtv/index.m3u8'"
+
+  daai_tv:
+    image: jrottenberg/ffmpeg:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    network_mode: "host"
+    entrypoint: >
+      /bin/sh -c "mkdir -p /hls/daai_tv &&
+      exec ffmpeg -hide_banner -loglevel warning \
+      -analyzeduration 10000000 -probesize 10000000 \
+      -re -i 'udp://239.2.2.34:3000?buffer_size=2097152' \
+      -map 0:0 -map 0:1 \
+      -c:v copy \
+      -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
+      -f hls \
+      -hls_time 2 \
+      -hls_list_size 20 \
+      -hls_flags delete_segments+append_list \
+      -hls_segment_filename '/hls/daai_tv/seg_%05d.ts' \
+      '/hls/daai_tv/index.m3u8'"
+
+  mentari_tv:
+    image: jrottenberg/ffmpeg:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    network_mode: "host"
+    entrypoint: >
+      /bin/sh -c "mkdir -p /hls/mentari_tv &&
+      exec ffmpeg -hide_banner -loglevel warning \
+      -analyzeduration 10000000 -probesize 10000000 \
+      -re -i 'udp://239.2.2.6:3000?buffer_size=2097152' \
+      -map 0:0 -map 0:1 \
+      -c:v copy \
+      -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
+      -f hls \
+      -hls_time 2 \
+      -hls_list_size 20 \
+      -hls_flags delete_segments+append_list \
+      -hls_segment_filename '/hls/mentari_tv/seg_%05d.ts' \
+      '/hls/mentari_tv/index.m3u8'"
+
+  rodja:
+    image: jrottenberg/ffmpeg:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    network_mode: "host"
+    entrypoint: >
+      /bin/sh -c "mkdir -p /hls/rodja &&
+      exec ffmpeg -hide_banner -loglevel warning \
+      -analyzeduration 10000000 -probesize 10000000 \
+      -re -i 'udp://239.2.2.31:3000?buffer_size=2097152' \
+      -map 0:0 -map 0:1 \
+      -c:v copy \
+      -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
+      -f hls \
+      -hls_time 2 \
+      -hls_list_size 20 \
+      -hls_flags delete_segments+append_list \
+      -hls_segment_filename '/hls/rodja/seg_%05d.ts' \
+      '/hls/rodja/index.m3u8'"
+
+  mgi:
+    image: jrottenberg/ffmpeg:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    network_mode: "host"
+    entrypoint: >
+      /bin/sh -c "mkdir -p /hls/mgi &&
+      exec ffmpeg -hide_banner -loglevel warning \
+      -analyzeduration 10000000 -probesize 10000000 \
+      -re -i 'udp://239.2.2.32:3000?buffer_size=2097152' \
+      -map 0:0 -map 0:1 \
+      -c:v copy \
+      -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
+      -f hls \
+      -hls_time 2 \
+      -hls_list_size 20 \
+      -hls_flags delete_segments+append_list \
+      -hls_segment_filename '/hls/mgi/seg_%05d.ts' \
+      '/hls/mgi/index.m3u8'"
+
+  ashiil:
+    image: jrottenberg/ffmpeg:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    network_mode: "host"
+    entrypoint: >
+      /bin/sh -c "mkdir -p /hls/ashiil &&
+      exec ffmpeg -hide_banner -loglevel warning \
+      -analyzeduration 10000000 -probesize 10000000 \
+      -re -i 'udp://239.2.2.33:3000?buffer_size=2097152' \
+      -map 0:0 -map 0:1 \
+      -c:v copy \
+      -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
+      -f hls \
+      -hls_time 2 \
+      -hls_list_size 20 \
+      -hls_flags delete_segments+append_list \
+      -hls_segment_filename '/hls/ashiil/seg_%05d.ts' \
+      '/hls/ashiil/index.m3u8'"

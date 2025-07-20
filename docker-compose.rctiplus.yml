@@ -1,0 +1,28 @@
+services:
+  rcti:
+    image: yuspynoza/rctiplus-go:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    command: -O /hls/rcti "http://rctiplus.hexafiber.net/rcti.m3u8"
+
+  mnctv:
+    image: yuspynoza/rctiplus-go:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    command: -O /hls/mnctv "http://rctiplus.hexafiber.net/mnctv.m3u8"
+
+  gtv:
+    image: yuspynoza/rctiplus-go:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    command: -O /hls/gtv "http://rctiplus.hexafiber.net/gtv.m3u8"
+
+  inews:
+    image: yuspynoza/rctiplus-go:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/ramdisk:/hls
+    command: -O /hls/inews "http://rctiplus.hexafiber.net/inews.m3u8"
