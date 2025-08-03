@@ -5,15 +5,12 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     network_mode: "host"
-    sysctls:
-      net.core.rmem_max: 2097152
-      net.core.rmem_default: 2097152
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/tvone &&
       rm -rf /hls/sctv/* &&
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
-      -re -i 'udp://239.2.2.2:3000?buffer_size=2097152' \
+      -re -i 'udp://239.2.2.2:3000' \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
@@ -42,15 +39,12 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     network_mode: "host"
-    sysctls:
-      net.core.rmem_max: 2097152
-      net.core.rmem_default: 2097152
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/kompastv &&
       rm -rf /hls/sctv/* &&
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
-      -re -i 'udp://239.2.2.17:3000?buffer_size=2097152' \
+      -re -i 'udp://239.2.2.17:3000' \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
@@ -79,15 +73,12 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     network_mode: "host"
-    sysctls:
-      net.core.rmem_max: 2097152
-      net.core.rmem_default: 2097152
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/cnbc_indonesia &&
       rm -rf /hls/sctv/* &&
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
-      -re -i 'udp://239.2.2.12:3000?buffer_size=2097152' \
+      -re -i 'udp://239.2.2.12:3000' \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
@@ -116,15 +107,12 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     network_mode: "host"
-    sysctls:
-      net.core.rmem_max: 2097152
-      net.core.rmem_default: 2097152
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/cnn_indonesia &&
       rm -rf /hls/sctv/* &&
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
-      -re -i 'udp://239.2.2.13:3000?buffer_size=2097152' \
+      -re -i 'udp://239.2.2.13:3000' \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
@@ -153,15 +141,12 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     network_mode: "host"
-    sysctls:
-      net.core.rmem_max: 2097152
-      net.core.rmem_default: 2097152
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/metrotv &&
       rm -rf /hls/sctv/* &&
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
-      -re -i 'udp://239.2.2.24:3000?buffer_size=2097152' \
+      -re -i 'udp://239.2.2.24:3000' \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
@@ -190,15 +175,12 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     network_mode: "host"
-    sysctls:
-      net.core.rmem_max: 2097152
-      net.core.rmem_default: 2097152
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/sctv &&
       rm -rf /hls/sctv/* &&
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
-      -re -i 'udp://239.2.2.29:3000?buffer_size=2097152' \
+      -re -i 'udp://239.2.2.29:3000' \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
@@ -227,15 +209,12 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     network_mode: "host"
-    sysctls:
-      net.core.rmem_max: 2097152
-      net.core.rmem_default: 2097152
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/indosiar &&
       rm -rf /hls/indosiar/* &&
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
-      -re -i 'udp://239.2.2.28:3000?buffer_size=2097152' \
+      -re -i 'udp://239.2.2.28:3000' \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
@@ -264,15 +243,12 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     network_mode: "host"
-    sysctls:
-      net.core.rmem_max: 2097152
-      net.core.rmem_default: 2097152
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/antv &&
       rm -rf /hls/antv/* &&
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
-      -re -i 'udp://239.2.2.15:3000?buffer_size=2097152' \
+      -re -i 'udp://239.2.2.15:3000' \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
@@ -301,15 +277,12 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     network_mode: "host"
-    sysctls:
-      net.core.rmem_max: 2097152
-      net.core.rmem_default: 2097152
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/transtv &&
       rm -rf /hls/transtv/* &&
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
-      -re -i 'udp://239.2.2.10:3000?buffer_size=2097152' \
+      -re -i 'udp://239.2.2.10:3000' \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
@@ -338,15 +311,12 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     network_mode: "host"
-    sysctls:
-      net.core.rmem_max: 2097152
-      net.core.rmem_default: 2097152
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/trans7 &&
       rm -rf /hls/trans7/* &&
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
-      -re -i 'udp://239.2.2.11:3000?buffer_size=2097152' \
+      -re -i 'udp://239.2.2.11:3000' \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
@@ -375,15 +345,12 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     network_mode: "host"
-    sysctls:
-      net.core.rmem_max: 2097152
-      net.core.rmem_default: 2097152
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/mdtv &&
       rm -rf /hls/mdtv/* &&
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
-      -re -i 'udp://239.2.2.14:3000?buffer_size=2097152' \
+      -re -i 'udp://239.2.2.14:3000' \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
@@ -412,15 +379,12 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     network_mode: "host"
-    sysctls:
-      net.core.rmem_max: 2097152
-      net.core.rmem_default: 2097152
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/rtv &&
       rm -rf /hls/rtv/* &&
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
-      -re -i 'udp://239.2.2.23:3000?buffer_size=2097152' \
+      -re -i 'udp://239.2.2.23:3000' \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
