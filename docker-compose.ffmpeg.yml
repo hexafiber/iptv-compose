@@ -5,6 +5,9 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     network_mode: "host"
+    sysctls:
+      net.core.rmem_max: 2097152
+      net.core.rmem_default: 2097152
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/tvone &&
       rm -rf /hls/sctv/* &&
@@ -39,6 +42,9 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     network_mode: "host"
+    sysctls:
+      net.core.rmem_max: 2097152
+      net.core.rmem_default: 2097152
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/kompastv &&
       rm -rf /hls/sctv/* &&
@@ -73,6 +79,9 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     network_mode: "host"
+    sysctls:
+      net.core.rmem_max: 2097152
+      net.core.rmem_default: 2097152
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/cnbc_indonesia &&
       rm -rf /hls/sctv/* &&
@@ -107,6 +116,9 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     network_mode: "host"
+    sysctls:
+      net.core.rmem_max: 2097152
+      net.core.rmem_default: 2097152
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/cnn_indonesia &&
       rm -rf /hls/sctv/* &&
@@ -141,6 +153,9 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     network_mode: "host"
+    sysctls:
+      net.core.rmem_max: 2097152
+      net.core.rmem_default: 2097152
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/metrotv &&
       rm -rf /hls/sctv/* &&
@@ -175,6 +190,9 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     network_mode: "host"
+    sysctls:
+      net.core.rmem_max: 2097152
+      net.core.rmem_default: 2097152
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/sctv &&
       rm -rf /hls/sctv/* &&
@@ -209,6 +227,9 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     network_mode: "host"
+    sysctls:
+      net.core.rmem_max: 2097152
+      net.core.rmem_default: 2097152
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/indosiar &&
       rm -rf /hls/indosiar/* &&
@@ -243,6 +264,9 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     network_mode: "host"
+    sysctls:
+      net.core.rmem_max: 2097152
+      net.core.rmem_default: 2097152
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/antv &&
       rm -rf /hls/antv/* &&
@@ -277,6 +301,9 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     network_mode: "host"
+    sysctls:
+      net.core.rmem_max: 2097152
+      net.core.rmem_default: 2097152
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/transtv &&
       rm -rf /hls/transtv/* &&
@@ -311,6 +338,9 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     network_mode: "host"
+    sysctls:
+      net.core.rmem_max: 2097152
+      net.core.rmem_default: 2097152
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/trans7 &&
       rm -rf /hls/trans7/* &&
@@ -345,6 +375,9 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     network_mode: "host"
+    sysctls:
+      net.core.rmem_max: 2097152
+      net.core.rmem_default: 2097152
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/mdtv &&
       rm -rf /hls/mdtv/* &&
@@ -379,6 +412,9 @@ services:
     volumes:
       - /tmp/ramdisk:/hls
     network_mode: "host"
+    sysctls:
+      net.core.rmem_max: 2097152
+      net.core.rmem_default: 2097152
     entrypoint: >
       /bin/sh -c "mkdir -p /hls/rtv &&
       rm -rf /hls/rtv/* &&
