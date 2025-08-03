@@ -10,14 +10,12 @@ services:
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
       -re -i 'udp://239.2.2.2:3000?buffer_size=2097152' \
-      -map 0:0 -map 0:1 \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
-      -hls_time 2 \
-      -hls_list_size 20 \
-      -hls_flags delete_segments+append_list \
-      -hls_segment_filename '/hls/tvone/seg_%05d.ts' \
+      -hls_time 6 \
+      -hls_list_size 10 \
+      -hls_flags delete_segments \
       '/hls/tvone/index.m3u8'"
 
   kompastv:
@@ -31,14 +29,12 @@ services:
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
       -re -i 'udp://239.2.2.17:3000?buffer_size=2097152' \
-      -map 0:0 -map 0:1 \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
-      -hls_time 2 \
-      -hls_list_size 20 \
-      -hls_flags delete_segments+append_list \
-      -hls_segment_filename '/hls/kompastv/seg_%05d.ts' \
+      -hls_time 6 \
+      -hls_list_size 10 \
+      -hls_flags delete_segments \
       '/hls/kompastv/index.m3u8'"
 
   cnbc_indonesia:
@@ -52,14 +48,12 @@ services:
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
       -re -i 'udp://239.2.2.12:3000?buffer_size=2097152' \
-      -map 0:0 -map 0:1 \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
-      -hls_time 2 \
-      -hls_list_size 20 \
-      -hls_flags delete_segments+append_list \
-      -hls_segment_filename '/hls/cnbc_indonesia/seg_%05d.ts' \
+      -hls_time 6 \
+      -hls_list_size 10 \
+      -hls_flags delete_segments \
       '/hls/cnbc_indonesia/index.m3u8'"
 
   cnn_indonesia:
@@ -73,14 +67,12 @@ services:
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
       -re -i 'udp://239.2.2.13:3000?buffer_size=2097152' \
-      -map 0:0 -map 0:1 \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
-      -hls_time 2 \
-      -hls_list_size 20 \
-      -hls_flags delete_segments+append_list \
-      -hls_segment_filename '/hls/cnn_indonesia/seg_%05d.ts' \
+      -hls_time 6 \
+      -hls_list_size 10 \
+      -hls_flags delete_segments \
       '/hls/cnn_indonesia/index.m3u8'"
 
   metrotv:
@@ -94,14 +86,12 @@ services:
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
       -re -i 'udp://239.2.2.24:3000?buffer_size=2097152' \
-      -map 0:0 -map 0:1 \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
-      -hls_time 2 \
-      -hls_list_size 20 \
-      -hls_flags delete_segments+append_list \
-      -hls_segment_filename '/hls/metrotv/seg_%05d.ts' \
+      -hls_time 6 \
+      -hls_list_size 10 \
+      -hls_flags delete_segments \
       '/hls/metrotv/index.m3u8'"
 
   bn_channel:
@@ -115,14 +105,12 @@ services:
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
       -re -i 'udp://239.2.2.25:3000?buffer_size=2097152' \
-      -map 0:0 -map 0:1 \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
-      -hls_time 2 \
-      -hls_list_size 20 \
-      -hls_flags delete_segments+append_list \
-      -hls_segment_filename '/hls/bn_channel/seg_%05d.ts' \
+      -hls_time 6 \
+      -hls_list_size 10 \
+      -hls_flags delete_segments \
       '/hls/bn_channel/index.m3u8'"
 
   sctv:
@@ -136,14 +124,12 @@ services:
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
       -re -i 'udp://239.2.2.29:3000?buffer_size=2097152' \
-      -map 0:0 -map 0:1 \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
-      -hls_time 2 \
-      -hls_list_size 20 \
-      -hls_flags delete_segments+append_list \
-      -hls_segment_filename '/hls/sctv/seg_%05d.ts' \
+      -hls_time 6 \
+      -hls_list_size 10 \
+      -hls_flags delete_segments \
       '/hls/sctv/index.m3u8'"
 
   indosiar:
@@ -157,14 +143,12 @@ services:
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
       -re -i 'udp://239.2.2.28:3000?buffer_size=2097152' \
-      -map 0:0 -map 0:1 \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
-      -hls_time 2 \
-      -hls_list_size 20 \
-      -hls_flags delete_segments+append_list \
-      -hls_segment_filename '/hls/indosiar/seg_%05d.ts' \
+      -hls_time 6 \
+      -hls_list_size 10 \
+      -hls_flags delete_segments \
       '/hls/indosiar/index.m3u8'"
 
   tvri_nasional:
@@ -178,14 +162,12 @@ services:
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
       -re -i 'udp://239.2.2.7:3000?buffer_size=2097152' \
-      -map 0:0 -map 0:1 \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
-      -hls_time 2 \
-      -hls_list_size 20 \
-      -hls_flags delete_segments+append_list \
-      -hls_segment_filename '/hls/tvri_nasional/seg_%05d.ts' \
+      -hls_time 6 \
+      -hls_list_size 10 \
+      -hls_flags delete_segments \
       '/hls/tvri_nasional/index.m3u8'"
 
   tvri_world:
@@ -199,14 +181,12 @@ services:
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
       -re -i 'udp://239.2.2.8:3000?buffer_size=2097152' \
-      -map 0:0 -map 0:1 \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
-      -hls_time 2 \
-      -hls_list_size 20 \
-      -hls_flags delete_segments+append_list \
-      -hls_segment_filename '/hls/tvri_world/seg_%05d.ts' \
+      -hls_time 6 \
+      -hls_list_size 10 \
+      -hls_flags delete_segments \
       '/hls/tvri_world/index.m3u8'"
 
   tvri_sport:
@@ -220,14 +200,12 @@ services:
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
       -re -i 'udp://239.2.2.9:3000?buffer_size=2097152' \
-      -map 0:0 -map 0:1 \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
-      -hls_time 2 \
-      -hls_list_size 20 \
-      -hls_flags delete_segments+append_list \
-      -hls_segment_filename '/hls/tvri_sport/seg_%05d.ts' \
+      -hls_time 6 \
+      -hls_list_size 10 \
+      -hls_flags delete_segments \
       '/hls/tvri_sport/index.m3u8'"
 
   antv:
@@ -241,14 +219,12 @@ services:
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
       -re -i 'udp://239.2.2.15:3000?buffer_size=2097152' \
-      -map 0:0 -map 0:1 \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
-      -hls_time 2 \
-      -hls_list_size 20 \
-      -hls_flags delete_segments+append_list \
-      -hls_segment_filename '/hls/antv/seg_%05d.ts' \
+      -hls_time 6 \
+      -hls_list_size 10 \
+      -hls_flags delete_segments \
       '/hls/antv/index.m3u8'"
 
   transtv:
@@ -262,14 +238,12 @@ services:
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
       -re -i 'udp://239.2.2.10:3000?buffer_size=2097152' \
-      -map 0:0 -map 0:1 \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
-      -hls_time 2 \
-      -hls_list_size 20 \
-      -hls_flags delete_segments+append_list \
-      -hls_segment_filename '/hls/transtv/seg_%05d.ts' \
+      -hls_time 6 \
+      -hls_list_size 10 \
+      -hls_flags delete_segments \
       '/hls/transtv/index.m3u8'"
 
   trans7:
@@ -283,14 +257,12 @@ services:
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
       -re -i 'udp://239.2.2.11:3000?buffer_size=2097152' \
-      -map 0:0 -map 0:1 \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
-      -hls_time 2 \
-      -hls_list_size 20 \
-      -hls_flags delete_segments+append_list \
-      -hls_segment_filename '/hls/trans7/seg_%05d.ts' \
+      -hls_time 6 \
+      -hls_list_size 10 \
+      -hls_flags delete_segments \
       '/hls/trans7/index.m3u8'"
 
   mdtv:
@@ -304,14 +276,12 @@ services:
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
       -re -i 'udp://239.2.2.14:3000?buffer_size=2097152' \
-      -map 0:0 -map 0:1 \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
-      -hls_time 2 \
-      -hls_list_size 20 \
-      -hls_flags delete_segments+append_list \
-      -hls_segment_filename '/hls/mdtv/seg_%05d.ts' \
+      -hls_time 6 \
+      -hls_list_size 10 \
+      -hls_flags delete_segments \
       '/hls/mdtv/index.m3u8'"
 
   moji:
@@ -325,14 +295,12 @@ services:
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
       -re -i 'udp://239.2.2.5:3000?buffer_size=2097152' \
-      -map 0:0 -map 0:1 \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
-      -hls_time 2 \
-      -hls_list_size 20 \
-      -hls_flags delete_segments+append_list \
-      -hls_segment_filename '/hls/moji/seg_%05d.ts' \
+      -hls_time 6 \
+      -hls_list_size 10 \
+      -hls_flags delete_segments \
       '/hls/moji/index.m3u8'"
 
   rtv:
@@ -346,14 +314,12 @@ services:
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
       -re -i 'udp://239.2.2.23:3000?buffer_size=2097152' \
-      -map 0:0 -map 0:1 \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
-      -hls_time 2 \
-      -hls_list_size 20 \
-      -hls_flags delete_segments+append_list \
-      -hls_segment_filename '/hls/rtv/seg_%05d.ts' \
+      -hls_time 6 \
+      -hls_list_size 10 \
+      -hls_flags delete_segments \
       '/hls/rtv/index.m3u8'"
 
   vtv:
@@ -367,14 +333,12 @@ services:
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
       -re -i 'udp://239.2.2.16:3000?buffer_size=2097152' \
-      -map 0:0 -map 0:1 \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
-      -hls_time 2 \
-      -hls_list_size 20 \
-      -hls_flags delete_segments+append_list \
-      -hls_segment_filename '/hls/vtv/seg_%05d.ts' \
+      -hls_time 6 \
+      -hls_list_size 10 \
+      -hls_flags delete_segments \
       '/hls/vtv/index.m3u8'"
 
   daai_tv:
@@ -388,14 +352,12 @@ services:
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
       -re -i 'udp://239.2.2.34:3000?buffer_size=2097152' \
-      -map 0:0 -map 0:1 \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
-      -hls_time 2 \
-      -hls_list_size 20 \
-      -hls_flags delete_segments+append_list \
-      -hls_segment_filename '/hls/daai_tv/seg_%05d.ts' \
+      -hls_time 6 \
+      -hls_list_size 10 \
+      -hls_flags delete_segments \
       '/hls/daai_tv/index.m3u8'"
 
   mentari_tv:
@@ -409,14 +371,12 @@ services:
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
       -re -i 'udp://239.2.2.6:3000?buffer_size=2097152' \
-      -map 0:0 -map 0:1 \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
-      -hls_time 2 \
-      -hls_list_size 20 \
-      -hls_flags delete_segments+append_list \
-      -hls_segment_filename '/hls/mentari_tv/seg_%05d.ts' \
+      -hls_time 6 \
+      -hls_list_size 10 \
+      -hls_flags delete_segments \
       '/hls/mentari_tv/index.m3u8'"
 
   rodja:
@@ -430,14 +390,12 @@ services:
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
       -re -i 'udp://239.2.2.31:3000?buffer_size=2097152' \
-      -map 0:0 -map 0:1 \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
-      -hls_time 2 \
-      -hls_list_size 20 \
-      -hls_flags delete_segments+append_list \
-      -hls_segment_filename '/hls/rodja/seg_%05d.ts' \
+      -hls_time 6 \
+      -hls_list_size 10 \
+      -hls_flags delete_segments \
       '/hls/rodja/index.m3u8'"
 
   mgi:
@@ -451,14 +409,12 @@ services:
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
       -re -i 'udp://239.2.2.32:3000?buffer_size=2097152' \
-      -map 0:0 -map 0:1 \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
-      -hls_time 2 \
-      -hls_list_size 20 \
-      -hls_flags delete_segments+append_list \
-      -hls_segment_filename '/hls/mgi/seg_%05d.ts' \
+      -hls_time 6 \
+      -hls_list_size 10 \
+      -hls_flags delete_segments \
       '/hls/mgi/index.m3u8'"
 
   ashiil:
@@ -472,12 +428,10 @@ services:
       exec ffmpeg -hide_banner -loglevel warning \
       -analyzeduration 10000000 -probesize 10000000 \
       -re -i 'udp://239.2.2.33:3000?buffer_size=2097152' \
-      -map 0:0 -map 0:1 \
       -c:v copy \
       -c:a aac -profile:a aac_low -b:a 64k -ar 32000 -ac 1 \
       -f hls \
-      -hls_time 2 \
-      -hls_list_size 20 \
-      -hls_flags delete_segments+append_list \
-      -hls_segment_filename '/hls/ashiil/seg_%05d.ts' \
+      -hls_time 6 \
+      -hls_list_size 10 \
+      -hls_flags delete_segments \
       '/hls/ashiil/index.m3u8'"
