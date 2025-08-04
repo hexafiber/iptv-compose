@@ -1,0 +1,59 @@
+map $uri $backend_stream {
+    default "";
+
+    /tvone           http://stream.hexa.tv/hls/tvone/index.m3u8;
+    /kompastv        http://stream.hexa.tv/hls/kompastv/index.m3u8;
+    /cnbcindonesia   http://stream.hexa.tv/hls/cnbcindonesia/index.m3u8;
+    /cnnindonesia    http://stream.hexa.tv/hls/cnnindonesia/index.m3u8;
+    /metrotv         http://stream.hexa.tv/hls/metrotv/index.m3u8;
+    /inews           http://stream.hexa.tv/hls/inews/index.m3u8;
+    /bnchannel       http://stream.hexa.tv/hls/bnchannel/index.m3u8;
+    /sctv            http://stream.hexa.tv/hls/sctv/index.m3u8;
+    /indosiar        http://stream.hexa.tv/hls/indosiar/index.m3u8;
+    /tvri-nasional   http://stream.hexa.tv/hls/tvri-nasional/index.m3u8;
+    /tvri-world      http://stream.hexa.tv/hls/tvri-world/index.m3u8;
+    /tvri-sport      http://stream.hexa.tv/hls/tvri-sport/index.m3u8;
+    /antv            http://stream.hexa.tv/hls/antv/index.m3u8;
+    /transtv         http://stream.hexa.tv/hls/transtv/index.m3u8;
+    /trans7          http://stream.hexa.tv/hls/trans7/index.m3u8;
+    /mdtv            http://stream.hexa.tv/hls/mdtv/index.m3u8;
+    /rcti            http://stream.hexa.tv/hls/rcti/index.m3u8;
+    /mnctv           http://stream.hexa.tv/hls/mnctv/index.m3u8;
+    /gtv             http://stream.hexa.tv/hls/gtv/index.m3u8;
+    /moji            http://stream.hexa.tv/hls/moji/index.m3u8;
+    /rtv             http://stream.hexa.tv/hls/rtv/index.m3u8;
+    /vtv             http://stream.hexa.tv/hls/vtv/index.m3u8;
+    /daaitv          http://stream.hexa.tv/hls/daaitv/index.m3u8;
+    /mentaritv       http://stream.hexa.tv/hls/mentaritv/index.m3u8;
+    /rodja           http://stream.hexa.tv/hls/rodja/index.m3u8;
+    /mgi             http://stream.hexa.tv/hls/mgi/index.m3u8;
+    /ashiil          http://stream.hexa.tv/hls/ashiil/index.m3u8;
+}
+
+map $url $udpxy_stream {
+    default "";
+
+    /tvone           http://172.20.3.2:4022/rtp/239.2.2.2:3000;
+    /kompastv        http://172.20.3.2:4022/rtp/239.2.2.17:3000;
+    /cnbcindonesia   http://172.20.3.2:4022/rtp/239.2.2.12:3000;
+    /cnnindonesia    http://172.20.3.2:4022/rtp/239.2.2.13:3000;
+    /metrotv         http://172.20.3.2:4022/rtp/239.2.2.24:3000;
+    /bnchannel       http://172.20.3.2:4022/rtp/239.2.2.25:3000;
+    /sctv            http://172.20.3.2:4022/rtp/239.2.2.29:3000;
+    /indosiar        http://172.20.3.2:4022/rtp/239.2.2.28:3000;
+    /tvri-nasional   http://172.20.3.2:4022/rtp/239.2.2.7:3000;
+    /tvri-world      http://172.20.3.2:4022/rtp/239.2.2.8:3000;
+    /tvri-sport      http://172.20.3.2:4022/rtp/239.2.2.9:3000;
+    /antv            http://172.20.3.2:4022/rtp/239.2.2.15:3000;
+    /transtv         http://172.20.3.2:4022/rtp/239.2.2.10:3000;
+    /trans7          http://172.20.3.2:4022/rtp/239.2.2.11:3000;
+    /mdtv            http://172.20.3.2:4022/rtp/239.2.2.14:3000;
+    /moji            http://172.20.3.2:4022/rtp/239.2.2.5:3000;
+    /rtv             http://172.20.3.2:4022/rtp/239.2.2.23:3000;
+    /vtv             http://172.20.3.2:4022/rtp/239.2.2.16:3000;
+    /daaitv          http://172.20.3.2:4022/rtp/239.2.2.34:3000;
+    /mentaritv       http://172.20.3.2:4022/rtp/239.2.2.6:3000;
+    /rodja           http://172.20.3.2:4022/rtp/239.2.2.31:3000;
+    /mgi             http://172.20.3.2:4022/rtp/239.2.2.32:3000;
+    /ashiil          http://172.20.3.2:4022/rtp/239.2.2.33:3000;
+}

@@ -4,6 +4,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./config/origin/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./config/origin/upstream_channels.map:/etc/nginx/upstream_channels.map:ro
       - /tmp/ramdisk:/hls:ro
     expose:
       - 80
