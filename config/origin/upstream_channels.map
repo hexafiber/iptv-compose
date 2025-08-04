@@ -30,7 +30,7 @@ map $uri $backend_stream {
     /ashiil          http://stream.hexa.tv/hls/ashiil/index.m3u8;
 }
 
-map $url $udpxy_stream {
+map $uri $udpxy_stream {
     default "";
 
     /tvone           http://172.20.3.2:4022/rtp/239.2.2.2:3000;
