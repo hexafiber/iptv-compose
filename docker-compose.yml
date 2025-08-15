@@ -3,16 +3,12 @@ version: '3.8'
 services:
   # TVONE HD
   tvone:
-    image: linuxserver/ffmpeg:latest
-    command: >
-      -i http://host.docker.internal:4022/udp/239.2.2.2:3000
-      -c:a copy -c:v copy
-      -hls_time 2
-      -hls_list_size 10
-      -hls_flags delete_segments
-      -f hls
-      /output/index.m3u8
+    image: jrottenberg/ffmpeg:6-alpine
+    environment:
+      - INPUT_URL=http://host.docker.internal:4022/udp/239.2.2.2:3000
+    command: ["/entrypoint.sh"]
     volumes:
+      - ./entrypoint.sh:/entrypoint.sh
       - /tmp/ramdisk/hls/tvone:/output
     restart: unless-stopped
     extra_hosts:
@@ -27,16 +23,12 @@ services:
 
   # KOMPASTV HD
   kompastv:
-    image: linuxserver/ffmpeg:latest
-    command: >
-      -i http://host.docker.internal:4022/udp/239.2.2.17:3000
-      -c:a copy -c:v copy
-      -hls_time 2
-      -hls_list_size 10
-      -hls_flags delete_segments
-      -f hls
-      /output/index.m3u8
+    image: jrottenberg/ffmpeg:6-alpine
+    environment:
+      - INPUT_URL=http://host.docker.internal:4022/udp/239.2.2.17:3000
+    command: ["/entrypoint.sh"]
     volumes:
+      - ./entrypoint.sh:/entrypoint.sh
       - /tmp/ramdisk/hls/kompastv:/output
     restart: unless-stopped
     extra_hosts:
@@ -50,18 +42,14 @@ services:
     cpus: 0.5
 
   # METRO TV HD
-  metro:
-    image: linuxserver/ffmpeg:latest
-    command: >
-      -i http://host.docker.internal:4022/udp/239.2.2.24:3000
-      -c:a copy -c:v copy
-      -hls_time 2
-      -hls_list_size 10
-      -hls_flags delete_segments
-      -f hls
-      /output/index.m3u8
+  metrotv:
+    image: jrottenberg/ffmpeg:6-alpine
+    environment:
+      - INPUT_URL=http://host.docker.internal:4022/udp/239.2.2.24:3000
+    command: ["/entrypoint.sh"]
     volumes:
-      - /tmp/ramdisk/hls/metro:/output
+      - ./entrypoint.sh:/entrypoint.sh
+      - /tmp/ramdisk/hls/metrotv:/output
     restart: unless-stopped
     extra_hosts:
       - "host.docker.internal:host-gateway"
@@ -75,16 +63,12 @@ services:
 
   # iNEWS HD
   inews:
-    image: linuxserver/ffmpeg:latest
-    command: >
-      -i http://host.docker.internal:4022/udp/239.2.2.38:3000
-      -c:a copy -c:v copy
-      -hls_time 2
-      -hls_list_size 10
-      -hls_flags delete_segments
-      -f hls
-      /output/index.m3u8
+    image: jrottenberg/ffmpeg:6-alpine
+    environment:
+      - INPUT_URL=http://host.docker.internal:4022/udp/239.2.2.38:3000
+    command: ["/entrypoint.sh"]
     volumes:
+      - ./entrypoint.sh:/entrypoint.sh
       - /tmp/ramdisk/hls/inews:/output
     restart: unless-stopped
     extra_hosts:
@@ -99,16 +83,12 @@ services:
 
   # SCTV HD
   sctv:
-    image: linuxserver/ffmpeg:latest
-    command: >
-      -i http://host.docker.internal:4022/udp/239.2.2.29:3000
-      -c:a copy -c:v copy
-      -hls_time 2
-      -hls_list_size 10
-      -hls_flags delete_segments
-      -f hls
-      /output/index.m3u8
+    image: jrottenberg/ffmpeg:6-alpine
+    environment:
+      - INPUT_URL=http://host.docker.internal:4022/udp/239.2.2.29:3000
+    command: ["/entrypoint.sh"]
     volumes:
+      - ./entrypoint.sh:/entrypoint.sh
       - /tmp/ramdisk/hls/sctv:/output
     restart: unless-stopped
     extra_hosts:
@@ -123,16 +103,12 @@ services:
 
   # INDOSIAR HD
   indosiar:
-    image: linuxserver/ffmpeg:latest
-    command: >
-      -i http://host.docker.internal:4022/udp/239.2.2.28:3000
-      -c:a copy -c:v copy
-      -hls_time 2
-      -hls_list_size 10
-      -hls_flags delete_segments
-      -f hls
-      /output/index.m3u8
+    image: jrottenberg/ffmpeg:6-alpine
+    environment:
+      - INPUT_URL=http://host.docker.internal:4022/udp/239.2.2.28:3000
+    command: ["/entrypoint.sh"]
     volumes:
+      - ./entrypoint.sh:/entrypoint.sh
       - /tmp/ramdisk/hls/indosiar:/output
     restart: unless-stopped
     extra_hosts:
@@ -147,16 +123,12 @@ services:
 
   # ANTV HD
   antv:
-    image: linuxserver/ffmpeg:latest
-    command: >
-      -i http://host.docker.internal:4022/udp/239.2.2.15:3000
-      -c:a copy -c:v copy
-      -hls_time 2
-      -hls_list_size 10
-      -hls_flags delete_segments
-      -f hls
-      /output/index.m3u8
+    image: jrottenberg/ffmpeg:6-alpine
+    environment:
+      - INPUT_URL=http://host.docker.internal:4022/udp/239.2.2.15:3000
+    command: ["/entrypoint.sh"]
     volumes:
+      - ./entrypoint.sh:/entrypoint.sh
       - /tmp/ramdisk/hls/antv:/output
     restart: unless-stopped
     extra_hosts:
@@ -171,16 +143,12 @@ services:
 
   # TRANS TV HD
   trans_tv:
-    image: linuxserver/ffmpeg:latest
-    command: >
-      -i http://host.docker.internal:4022/udp/239.2.2.10:3000
-      -c:a copy -c:v copy
-      -hls_time 2
-      -hls_list_size 10
-      -hls_flags delete_segments
-      -f hls
-      /output/index.m3u8
+    image: jrottenberg/ffmpeg:6-alpine
+    environment:
+      - INPUT_URL=http://host.docker.internal:4022/udp/239.2.2.10:3000
+    command: ["/entrypoint.sh"]
     volumes:
+      - ./entrypoint.sh:/entrypoint.sh
       - /tmp/ramdisk/hls/trans_tv:/output
     restart: unless-stopped
     extra_hosts:
@@ -195,16 +163,12 @@ services:
 
   # TRANS 7 HD
   trans_7:
-    image: linuxserver/ffmpeg:latest
-    command: >
-      -i http://host.docker.internal:4022/udp/239.2.2.11:3000
-      -c:a copy -c:v copy
-      -hls_time 2
-      -hls_list_size 10
-      -hls_flags delete_segments
-      -f hls
-      /output/index.m3u8
+    image: jrottenberg/ffmpeg:6-alpine
+    environment:
+      - INPUT_URL=http://host.docker.internal:4022/udp/239.2.2.11:3000
+    command: ["/entrypoint.sh"]
     volumes:
+      - ./entrypoint.sh:/entrypoint.sh
       - /tmp/ramdisk/hls/trans_7:/output
     restart: unless-stopped
     extra_hosts:
@@ -219,16 +183,12 @@ services:
 
   # MDTV HD
   mdtv:
-    image: linuxserver/ffmpeg:latest
-    command: >
-      -i http://host.docker.internal:4022/udp/239.2.2.14:3000
-      -c:a copy -c:v copy
-      -hls_time 2
-      -hls_list_size 10
-      -hls_flags delete_segments
-      -f hls
-      /output/index.m3u8
+    image: jrottenberg/ffmpeg:6-alpine
+    environment:
+      - INPUT_URL=http://host.docker.internal:4022/udp/239.2.2.14:3000
+    command: ["/entrypoint.sh"]
     volumes:
+      - ./entrypoint.sh:/entrypoint.sh
       - /tmp/ramdisk/hls/mdtv:/output
     restart: unless-stopped
     extra_hosts:
@@ -243,17 +203,13 @@ services:
 
   # RCTI HD
   rcti:
-    image: linuxserver/ffmpeg:latest
-    command: >
-      -i http://host.docker.internal:4022/udp/239.2.2.35:3000
-      -c:a copy -c:v copy
-      -hls_time 2
-      -hls_list_size 10
-      -hls_flags delete_segments
-      -f hls
-      /output/index.m3u8
+    image: jrottenberg/ffmpeg:6-alpine
+    environment:
+      - INPUT_URL=http://host.docker.internal:4022/udp/239.2.2.35:3000
+    command: ["/entrypoint.sh"]
     volumes:
-      - /tmp/ramdisk/hls/rcti:/output
+      - ./entrypoint.sh:/entrypoint.sh
+      - /tmp/ramdisk/hls/tvone:/output
     restart: unless-stopped
     extra_hosts:
       - "host.docker.internal:host-gateway"
@@ -267,17 +223,13 @@ services:
 
   # MNCTV HD
   mnctv:
-    image: linuxserver/ffmpeg:latest
-    command: >
-      -i http://host.docker.internal:4022/udp/239.2.2.36:3000
-      -c:a copy -c:v copy
-      -hls_time 2
-      -hls_list_size 10
-      -hls_flags delete_segments
-      -f hls
-      /output/index.m3u8
+    image: jrottenberg/ffmpeg:6-alpine
+    environment:
+      - INPUT_URL=http://host.docker.internal:4022/udp/239.2.2.36:3000
+    command: ["/entrypoint.sh"]
     volumes:
-      - /tmp/ramdisk/hls/mnctv:/output
+      - ./entrypoint.sh:/entrypoint.sh
+      - /tmp/ramdisk/hls/tvone:/output
     restart: unless-stopped
     extra_hosts:
       - "host.docker.internal:host-gateway"
@@ -291,17 +243,13 @@ services:
 
   # GTV HD
   gtv:
-    image: linuxserver/ffmpeg:latest
-    command: >
-      -i http://host.docker.internal:4022/udp/239.2.2.37:3000
-      -c:a copy -c:v copy
-      -hls_time 2
-      -hls_list_size 10
-      -hls_flags delete_segments
-      -f hls
-      /output/index.m3u8
+    image: jrottenberg/ffmpeg:6-alpine
+    environment:
+      - INPUT_URL=http://host.docker.internal:4022/udp/239.2.2.37:3000
+    command: ["/entrypoint.sh"]
     volumes:
-      - /tmp/ramdisk/hls/gtv:/output
+      - ./entrypoint.sh:/entrypoint.sh
+      - /tmp/ramdisk/hls/tvone:/output
     restart: unless-stopped
     extra_hosts:
       - "host.docker.internal:host-gateway"
@@ -319,6 +267,6 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - /tmp/ramdisk/hls:/hls:ro
+      - /tm     - ./entrypoint.sh:/entrypoint.shp/ramdisk/hls:/hls:ro
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
     restart: unless-stopped
