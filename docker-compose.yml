@@ -1,0 +1,324 @@
+version: '3.8'
+
+services:
+  # TVONE HD
+  tvone:
+    image: linuxserver/ffmpeg:latest
+    command: >
+      -i http://host.docker.internal:4022/udp/239.2.2.2:3000
+      -c:a copy -c:v copy
+      -hls_time 2
+      -hls_list_size 10
+      -hls_flags delete_segments
+      -f hls
+      /output/index.m3u8
+    volumes:
+      - /tmp/ramdisk/hls/tvone:/output
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "sh", "-c", "[ -f /output/index.m3u8 ] && [ $(find /output/index.m3u8 -mtime -10s | wc -l) -gt 0 ]"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    mem_limit: 256m
+    cpus: 0.5
+
+  # KOMPASTV HD
+  kompastv:
+    image: linuxserver/ffmpeg:latest
+    command: >
+      -i http://host.docker.internal:4022/udp/239.2.2.17:3000
+      -c:a copy -c:v copy
+      -hls_time 2
+      -hls_list_size 10
+      -hls_flags delete_segments
+      -f hls
+      /output/index.m3u8
+    volumes:
+      - /tmp/ramdisk/hls/kompastv:/output
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "sh", "-c", "[ -f /output/index.m3u8 ] && [ $(find /output/index.m3u8 -mtime -10s | wc -l) -gt 0 ]"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    mem_limit: 256m
+    cpus: 0.5
+
+  # METRO TV HD
+  metro:
+    image: linuxserver/ffmpeg:latest
+    command: >
+      -i http://host.docker.internal:4022/udp/239.2.2.24:3000
+      -c:a copy -c:v copy
+      -hls_time 2
+      -hls_list_size 10
+      -hls_flags delete_segments
+      -f hls
+      /output/index.m3u8
+    volumes:
+      - /tmp/ramdisk/hls/metro:/output
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "sh", "-c", "[ -f /output/index.m3u8 ] && [ $(find /output/index.m3u8 -mtime -10s | wc -l) -gt 0 ]"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    mem_limit: 256m
+    cpus: 0.5
+
+  # iNEWS HD
+  inews:
+    image: linuxserver/ffmpeg:latest
+    command: >
+      -i http://host.docker.internal:4022/udp/239.2.2.38:3000
+      -c:a copy -c:v copy
+      -hls_time 2
+      -hls_list_size 10
+      -hls_flags delete_segments
+      -f hls
+      /output/index.m3u8
+    volumes:
+      - /tmp/ramdisk/hls/inews:/output
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "sh", "-c", "[ -f /output/index.m3u8 ] && [ $(find /output/index.m3u8 -mtime -10s | wc -l) -gt 0 ]"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    mem_limit: 256m
+    cpus: 0.5
+
+  # SCTV HD
+  sctv:
+    image: linuxserver/ffmpeg:latest
+    command: >
+      -i http://host.docker.internal:4022/udp/239.2.2.29:3000
+      -c:a copy -c:v copy
+      -hls_time 2
+      -hls_list_size 10
+      -hls_flags delete_segments
+      -f hls
+      /output/index.m3u8
+    volumes:
+      - /tmp/ramdisk/hls/sctv:/output
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "sh", "-c", "[ -f /output/index.m3u8 ] && [ $(find /output/index.m3u8 -mtime -10s | wc -l) -gt 0 ]"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    mem_limit: 256m
+    cpus: 0.5
+
+  # INDOSIAR HD
+  indosiar:
+    image: linuxserver/ffmpeg:latest
+    command: >
+      -i http://host.docker.internal:4022/udp/239.2.2.28:3000
+      -c:a copy -c:v copy
+      -hls_time 2
+      -hls_list_size 10
+      -hls_flags delete_segments
+      -f hls
+      /output/index.m3u8
+    volumes:
+      - /tmp/ramdisk/hls/indosiar:/output
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "sh", "-c", "[ -f /output/index.m3u8 ] && [ $(find /output/index.m3u8 -mtime -10s | wc -l) -gt 0 ]"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    mem_limit: 256m
+    cpus: 0.5
+
+  # ANTV HD
+  antv:
+    image: linuxserver/ffmpeg:latest
+    command: >
+      -i http://host.docker.internal:4022/udp/239.2.2.15:3000
+      -c:a copy -c:v copy
+      -hls_time 2
+      -hls_list_size 10
+      -hls_flags delete_segments
+      -f hls
+      /output/index.m3u8
+    volumes:
+      - /tmp/ramdisk/hls/antv:/output
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "sh", "-c", "[ -f /output/index.m3u8 ] && [ $(find /output/index.m3u8 -mtime -10s | wc -l) -gt 0 ]"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    mem_limit: 256m
+    cpus: 0.5
+
+  # TRANS TV HD
+  trans_tv:
+    image: linuxserver/ffmpeg:latest
+    command: >
+      -i http://host.docker.internal:4022/udp/239.2.2.10:3000
+      -c:a copy -c:v copy
+      -hls_time 2
+      -hls_list_size 10
+      -hls_flags delete_segments
+      -f hls
+      /output/index.m3u8
+    volumes:
+      - /tmp/ramdisk/hls/trans_tv:/output
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "sh", "-c", "[ -f /output/index.m3u8 ] && [ $(find /output/index.m3u8 -mtime -10s | wc -l) -gt 0 ]"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    mem_limit: 256m
+    cpus: 0.5
+
+  # TRANS 7 HD
+  trans_7:
+    image: linuxserver/ffmpeg:latest
+    command: >
+      -i http://host.docker.internal:4022/udp/239.2.2.11:3000
+      -c:a copy -c:v copy
+      -hls_time 2
+      -hls_list_size 10
+      -hls_flags delete_segments
+      -f hls
+      /output/index.m3u8
+    volumes:
+      - /tmp/ramdisk/hls/trans_7:/output
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "sh", "-c", "[ -f /output/index.m3u8 ] && [ $(find /output/index.m3u8 -mtime -10s | wc -l) -gt 0 ]"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    mem_limit: 256m
+    cpus: 0.5
+
+  # MDTV HD
+  mdtv:
+    image: linuxserver/ffmpeg:latest
+    command: >
+      -i http://host.docker.internal:4022/udp/239.2.2.14:3000
+      -c:a copy -c:v copy
+      -hls_time 2
+      -hls_list_size 10
+      -hls_flags delete_segments
+      -f hls
+      /output/index.m3u8
+    volumes:
+      - /tmp/ramdisk/hls/mdtv:/output
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "sh", "-c", "[ -f /output/index.m3u8 ] && [ $(find /output/index.m3u8 -mtime -10s | wc -l) -gt 0 ]"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    mem_limit: 256m
+    cpus: 0.5
+
+  # RCTI HD
+  rcti:
+    image: linuxserver/ffmpeg:latest
+    command: >
+      -i http://host.docker.internal:4022/udp/239.2.2.35:3000
+      -c:a copy -c:v copy
+      -hls_time 2
+      -hls_list_size 10
+      -hls_flags delete_segments
+      -f hls
+      /output/index.m3u8
+    volumes:
+      - /tmp/ramdisk/hls/rcti:/output
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "sh", "-c", "[ -f /output/index.m3u8 ] && [ $(find /output/index.m3u8 -mtime -10s | wc -l) -gt 0 ]"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    mem_limit: 256m
+    cpus: 0.5
+
+  # MNCTV HD
+  mnctv:
+    image: linuxserver/ffmpeg:latest
+    command: >
+      -i http://host.docker.internal:4022/udp/239.2.2.36:3000
+      -c:a copy -c:v copy
+      -hls_time 2
+      -hls_list_size 10
+      -hls_flags delete_segments
+      -f hls
+      /output/index.m3u8
+    volumes:
+      - /tmp/ramdisk/hls/mnctv:/output
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "sh", "-c", "[ -f /output/index.m3u8 ] && [ $(find /output/index.m3u8 -mtime -10s | wc -l) -gt 0 ]"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    mem_limit: 256m
+    cpus: 0.5
+
+  # GTV HD
+  gtv:
+    image: linuxserver/ffmpeg:latest
+    command: >
+      -i http://host.docker.internal:4022/udp/239.2.2.37:3000
+      -c:a copy -c:v copy
+      -hls_time 2
+      -hls_list_size 10
+      -hls_flags delete_segments
+      -f hls
+      /output/index.m3u8
+    volumes:
+      - /tmp/ramdisk/hls/gtv:/output
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "sh", "-c", "[ -f /output/index.m3u8 ] && [ $(find /output/index.m3u8 -mtime -10s | wc -l) -gt 0 ]"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    mem_limit: 256m
+    cpus: 0.5
+
+  # Nginx server untuk serve HLS
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - /tmp/ramdisk/hls:/hls:ro
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    restart: unless-stopped
