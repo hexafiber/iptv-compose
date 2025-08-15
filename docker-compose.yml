@@ -267,6 +267,6 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - /tm     - ./entrypoint.sh:/entrypoint.shp/ramdisk/hls:/hls:ro
+      - /tmp/ramdisk/hls:/hls:ro
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
     restart: unless-stopped
